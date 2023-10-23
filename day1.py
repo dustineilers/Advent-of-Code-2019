@@ -7,6 +7,14 @@ def fuel_required(mass) -> int:
 total_fuel = 0
 
 for mass in file.readlines():
-    total_fuel += fuel_required(int(mass))
+    fuel = fuel_required(int(mass))
+    
+    total_fuel += fuel
+
+    additional_mass = fuel
+
+    while (additional_fuel := fuel_required(additional_mass)) > 0:
+        total_fuel += additional_fuel
+        additional_mass = additional_fuel
 
 print(total_fuel)
